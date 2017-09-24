@@ -11,4 +11,8 @@ export class SpytoolbarComponent implements OnInit {
   ngOnInit() { }
 
   title = 'SpyWebApp';
+
+  MenuList = [
+    {slug: "home", title: "Home", icon: "home"}, {slug: "sheets", title: "Risultati", icon: "pie_chart"}
+  ];
 }

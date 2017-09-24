@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Http} from "@angular/http";
 import 'rxjs/add/operator/map'
+import {HttpSerService} from "../_services/http/http-ser.service";
 
 @Component({
   selector: 'app-spy-content',
@@ -9,19 +10,31 @@ import 'rxjs/add/operator/map'
 })
 export class SpyContentComponent implements OnInit {
 
+  devicesList = [];
+  devicesError = [
+    {
+      title: "Qualcosa non è andata per il verso giusto :("
+    }
+    ];
 
-  ngOnInit() { }
+  req = {"r": "WebAppAllDevices"};
 
-  title = 'SpyWebApp';
+  constructor(private _httpService: HttpSerService) { }
+  ngOnInit() { this.getAllDevices() }
 
-  myData: Array<any>;
-
-  constructor(private http:Http) {
-
-    this.http.get('https://jsonplaceholder.typicode.com/photos')
-      .map(response => response.json())
-      .subscribe(res => this.myData = res);
-
+  getAllDevices ()
+  {
+    this._httpService.postMethod({js_object: this.req})
+      .subscribe(
+        response =>
+        {
+          console.log(response);
+          if (response['response'])
+            this.devicesList = response['postsList'];
+          else
+            this.devicesList = this.devicesError;
+        }
+      );
   }
 
 }
