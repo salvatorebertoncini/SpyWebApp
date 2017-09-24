@@ -15,7 +15,7 @@ export class SpyContentComponent implements OnInit {
     {
       title: "Qualcosa non è andata per il verso giusto :("
     }
-    ];
+  ];
 
   req = {"r": "WebAppAllDevices"};
 
@@ -30,7 +30,7 @@ export class SpyContentComponent implements OnInit {
         {
           console.log(response);
           if (response['response'])
-            this.devicesList = response['postsList'];
+            this.devicesList = response['devicesList'];
           else
             this.devicesList = this.devicesError;
         }

@@ -9,7 +9,7 @@ import 'rxjs/add/observable/throw'
 @Injectable()
 export class HttpSerService {
 
-  serverUrl = "http://127.0.0.1/salvobertoncini-server/server.php"
+  serverUrl = "http://127.0.0.1:8000/Server/"
 
   constructor (private _http: Http) {}
 

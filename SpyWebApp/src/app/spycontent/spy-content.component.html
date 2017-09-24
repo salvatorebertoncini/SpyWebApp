@@ -1,8 +1,11 @@
-<md-card class="example-card" *ngFor="let data of (myData ? myData.slice(0,10): []); let i = index">
+<md-card class="example-card" *ngFor="let data of devicesList">
 
+  <!--
   <img md-card-image src="{{ data.url }}">
+  -->
+
   <md-card-header>
-    <md-card-title>{{ data.title }}</md-card-title>
+    <md-card-title>{{ data }}</md-card-title>
   </md-card-header>
 
   <md-card-actions>
