@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map'
 import {HttpSerService} from "../_services/http/http-ser.service";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'app-spy-content',
@@ -9,11 +10,7 @@ import {HttpSerService} from "../_services/http/http-ser.service";
 })
 export class SpyContentComponent implements OnInit {
 
-  devicesList = [
-    {
-      title: "Qualcosa non è andata per il verso giusto :("
-    }
-  ];
+  devicesList = [];
 
   req = {"r": "WebAppAllDevices"};
 
@@ -21,8 +18,6 @@ export class SpyContentComponent implements OnInit {
   ngOnInit()
   {
     this.getAllDevices();
-    console.log("deviceList: ")
-    console.log(this.devicesList);
   }
 
   getAllDevices ()
@@ -32,13 +27,19 @@ export class SpyContentComponent implements OnInit {
         response =>
         {
           console.log(response);
-          if (response)
+          if (response["response"] == true)
           {
-            //let body = response.text();
-            //body.json();
-            console.log("ok");
+            let devicesJSONList = JSON.parse(response["devicesList"]);
 
-            //this.devicesList = response['devicesList'];
+            for (let devices of devicesJSONList)
+              //this.devicesList.push(devices["stats"]["BuildInfo"]["Manufacturers"]["devices"]);
+              this.devicesList = devices["stats"]["BuildInfo"]["Manufacturers"]["devices"];
+            
+            console.log(this.devicesList);
+
+          }
+          else {
+            this.devicesList.push({Brand: "Qualcosa non è andata per il verso giusto :("});
           }
         }
       );

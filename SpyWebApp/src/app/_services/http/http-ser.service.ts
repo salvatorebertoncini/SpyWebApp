@@ -32,7 +32,7 @@ export class HttpSerService {
     this.createAuthorizationHeader(headers);
     return this._http.post(this.serverUrl, JSON.stringify(data), {headers: headers})
       .map((response:Response) => response.json())
-      //.catch(this.handleError);
+      .catch(this.handleError);
 
   }
 
