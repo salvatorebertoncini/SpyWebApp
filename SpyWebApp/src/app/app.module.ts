@@ -18,11 +18,13 @@ import {AuthService} from "./_services/security/auth.service";
 import {AlertService} from "./_services/alert/alert.service";
 import {PagerService} from "./_services/pagination/pager.service";
 import {HttpSerService} from "./_services/http/http-ser.service";
+import {BrandComponent} from './brand/brand.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', redirectTo: '', pathMatch: 'full' },
   { path: 'sheets', component: SpyContentComponent },
+  {path: 'sheets/:brand', component: BrandComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     SpytoolbarComponent,
     SpyContentComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    BrandComponent
   ],
   imports: [
     RouterModule.forRoot(
