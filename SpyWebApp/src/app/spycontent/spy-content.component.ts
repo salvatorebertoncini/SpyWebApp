@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Http} from "@angular/http";
 import 'rxjs/add/operator/map'
 import {HttpSerService} from "../_services/http/http-ser.service";
 
@@ -10,8 +9,7 @@ import {HttpSerService} from "../_services/http/http-ser.service";
 })
 export class SpyContentComponent implements OnInit {
 
-  devicesList = [];
-  devicesError = [
+  devicesList = [
     {
       title: "Qualcosa non è andata per il verso giusto :("
     }
@@ -20,7 +18,12 @@ export class SpyContentComponent implements OnInit {
   req = {"r": "WebAppAllDevices"};
 
   constructor(private _httpService: HttpSerService) { }
-  ngOnInit() { this.getAllDevices() }
+  ngOnInit()
+  {
+    this.getAllDevices();
+    console.log("deviceList: ")
+    console.log(this.devicesList);
+  }
 
   getAllDevices ()
   {
@@ -29,10 +32,14 @@ export class SpyContentComponent implements OnInit {
         response =>
         {
           console.log(response);
-          if (response['response'])
-            this.devicesList = response['devicesList'];
-          else
-            this.devicesList = this.devicesError;
+          if (response)
+          {
+            //let body = response.text();
+            //body.json();
+            console.log("ok");
+
+            //this.devicesList = response['devicesList'];
+          }
         }
       );
   }

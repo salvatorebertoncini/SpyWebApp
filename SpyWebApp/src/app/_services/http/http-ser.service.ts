@@ -32,14 +32,16 @@ export class HttpSerService {
     this.createAuthorizationHeader(headers);
     return this._http.post(this.serverUrl, JSON.stringify(data), {headers: headers})
       .map((response:Response) => response.json())
-      .catch(this.handleError);
+      //.catch(this.handleError);
+
   }
 
   private handleError(error: Response)
   {
-    /*console.error(error);
+    //console.error(error);
+
     let message = "Error status code "+error.status+" at "+error.url;
-    return Observable.throw(message);*/
-    return Observable.throw("error");
+    return Observable.throw(message);
+    //return Observable.throw("error");
   }
 }
