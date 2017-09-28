@@ -1,4 +1,4 @@
-<md-card class="example-card" *ngFor="let data of devicesList">
+<md-card class="example-card" *ngFor="let data of IMEIList">
 
   <!--
   <img md-card-image src="{{ data.url }}">
@@ -6,7 +6,7 @@
 
   <md-card-header>
     <md-card-title>IMEI: {{ data }}</md-card-title>
-    <md-card-subtitle></md-card-subtitle>
+    <md-card-subtitle>{{ brand }}</md-card-subtitle>
   </md-card-header>
 
   <md-card-content>

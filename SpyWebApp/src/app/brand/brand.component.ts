@@ -13,7 +13,8 @@ export class BrandComponent implements OnInit {
   slug: string;
   private sub: any;
   req = {};
-  private devicesList: any;
+  private IMEIList: any;
+  private brand: any;
 
   constructor(private router: Router, private route: ActivatedRoute, private _sanitizer: DomSanitizer, private _httpService: HttpSerService) {
   }
@@ -22,7 +23,7 @@ export class BrandComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.slug = params['brand'];
       this.req = {"r": "GetIMEIWithSlug", "s": this.slug};
-      this.devicesList = this.getIMEIWithSlug(this.req);
+      this.IMEIList = this.getIMEIWithSlug(this.req);
     });
   }
 
@@ -33,14 +34,9 @@ export class BrandComponent implements OnInit {
           console.log(response);
           if (response['response']) {
             let devicesJSONList = JSON.parse(response["IMEIList"]);
-            for (let devices of devicesJSONList) {
-              let device = devices["stats"]["BuildInfo"]["Manufacturers"]["devices"];
-              for (let brand of device) {
-                if (brand["Brand"] == this.slug)
-                  this.devicesList = brand["IMEI"];
-              }
-            }
-            console.log(this.devicesList);
+
+            this.IMEIList = devicesJSONList["IMEI"];
+            this.brand = devicesJSONList["Brand"];
           }
           else
             this.router.navigate(['/page-not-found']);
