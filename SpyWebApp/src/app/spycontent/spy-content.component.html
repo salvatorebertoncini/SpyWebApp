@@ -6,22 +6,18 @@
 
   <md-card-header>
     <md-card-title>{{ data.Brand }}</md-card-title>
-    <md-card-subtitle></md-card-subtitle>
+    <md-card-subtitle>devices: {{data.counter}}</md-card-subtitle>
   </md-card-header>
 
   <md-card-content>
-    <p>devices: {{data.counter}}</p>
+
   </md-card-content>
 
   <md-card-actions>
-    <a md-button [routerLink]="['/sheets/', data.Brand]">
+    <a md-button [routerLink]="['/brands/', data.Brand]">
       <md-icon>visibility</md-icon>
       VIEW
     </a>
-    <button md-button>
-      <md-icon>share</md-icon>
-      SHARE
-    </button>
   </md-card-actions>
 
 </md-card>

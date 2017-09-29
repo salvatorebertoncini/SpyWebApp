@@ -19,12 +19,16 @@ import {AlertService} from "./_services/alert/alert.service";
 import {PagerService} from "./_services/pagination/pager.service";
 import {HttpSerService} from "./_services/http/http-ser.service";
 import {BrandComponent} from './brand/brand.component';
+import {UserComponent} from './users/users.component';
+import {AllUsersComponent} from './all-users/all-users.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', redirectTo: '', pathMatch: 'full' },
-  { path: 'sheets', component: SpyContentComponent },
-  {path: 'sheets/:brand', component: BrandComponent},
+  {path: 'brands', component: SpyContentComponent},
+  {path: 'brands/:brand', component: BrandComponent},
+  {path: 'users', component: AllUsersComponent},
+  {path: 'users/:slug', component: UserComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -35,7 +39,9 @@ const appRoutes: Routes = [
     SpyContentComponent,
     HomeComponent,
     PageNotFoundComponent,
-    BrandComponent
+    BrandComponent,
+    UserComponent,
+    AllUsersComponent
   ],
   imports: [
     RouterModule.forRoot(

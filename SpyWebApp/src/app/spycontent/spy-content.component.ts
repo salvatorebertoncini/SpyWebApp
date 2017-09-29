@@ -22,7 +22,7 @@ export class SpyContentComponent implements OnInit {
 
   getAllDevices ()
   {
-    this._httpService.postMethod({js_object: this.req})
+    this._httpService.postMethod(this.req)
       .subscribe(
         response =>
         {
