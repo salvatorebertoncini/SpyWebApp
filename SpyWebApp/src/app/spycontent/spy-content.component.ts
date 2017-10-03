@@ -29,13 +29,8 @@ export class SpyContentComponent implements OnInit {
           console.log(response);
           if (response["response"])
           {
-            let devicesJSONList = JSON.parse(response["devicesList"]);
-
-            for (let devices of devicesJSONList)
-              this.devicesList = devices["stats"]["BuildInfo"]["Manufacturers"]["devices"];
-
+            this.devicesList = JSON.parse(response["devicesList"]);
             console.log(this.devicesList);
-
           }
           else {
             this.devicesList.push({Brand: "Qualcosa non è andata per il verso giusto :("});

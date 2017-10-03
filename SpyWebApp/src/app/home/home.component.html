@@ -1,6 +1,22 @@
-<div style="text-align:center">
-  <h1 class="mat-h1">
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="../../assets/img/flash.jpg">
-</div>
+<md-card class="example-card">
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title>
+      Welcome to {{title}}!
+    </md-card-title>
+    <md-card-subtitle>Powered by ServerTorch</md-card-subtitle>
+  </md-card-header>
+
+  <md-card-content>
+    Premi INIZIA per vedere gli utenti catturati!
+  </md-card-content>
+
+  <md-card-actions>
+    <a md-button [routerLink]="['/users']">
+      <md-icon>fingerprint</md-icon>
+      INIZIA
+    </a>
+  </md-card-actions>
+
+</md-card>
+

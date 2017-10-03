@@ -1,0 +1,26 @@
+<md-card class="example-card" *ngFor="let data of DevicesList">
+
+  <!--
+  <img md-card-image src="{{ data.url }}">
+  -->
+
+  <md-card-header>
+    <md-card-title>{{ data["BuildInfo"]["Brand"]}} {{ data["BuildInfo"]["Model"]}}</md-card-title>
+    <md-card-subtitle>{{ data["TelephoneInfo"]["IMEI"] }}</md-card-subtitle>
+  </md-card-header>
+
+  <md-card-content>
+    <p>Phone Number: {{ data["TelephoneInfo"]["PhoneNumber"] }}</p>
+    <p>Network Operator: {{ data["TelephoneInfo"]["NetworkOperatorName"] }}</p>
+    <p>Fingerprint: {{ data["BuildInfo"]["Fingerprint"] }}</p>
+    <p>User: {{ data["BuildInfo"]["User"] }}</p>
+    <p>Battery Level: {{ data["BatteryInfo"]["Level"] }}</p>
+    <p>Is Battery Charging: {{ data["BatteryInfo"]["IsCharging"] }}</p>
+  </md-card-content>
+
+  <md-card-actions>
+
+  </md-card-actions>
+
+</md-card>
+

@@ -21,6 +21,7 @@ import {HttpSerService} from "./_services/http/http-ser.service";
 import {BrandComponent} from './brand/brand.component';
 import {UserComponent} from './users/users.component';
 import {AllUsersComponent} from './all-users/all-users.component';
+import {DevicesComponent} from './devices/devices.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   {path: 'brands/:brand', component: BrandComponent},
   {path: 'users', component: AllUsersComponent},
   {path: 'users/:slug', component: UserComponent},
+  {path: 'devices/:slug', component: DevicesComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -41,7 +43,8 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     BrandComponent,
     UserComponent,
-    AllUsersComponent
+    AllUsersComponent,
+    DevicesComponent
   ],
   imports: [
     RouterModule.forRoot(

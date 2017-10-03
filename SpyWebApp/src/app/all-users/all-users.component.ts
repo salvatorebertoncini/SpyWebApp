@@ -27,8 +27,8 @@ export class AllUsersComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          if (response['response']) {
-            this.UserList = JSON.parse(response["UsersList"]);
+          if (response["response"]) {
+            this.UserList = JSON.parse(response["UserList"]);
             console.log(this.UserList);
           }
         }

@@ -1,2 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.app-content {
+  background-color: #FAFAFA;
+  padding: 20px;
+}
+
+md-card {
+  margin: 20px;
+}
+
+.example-header-image {
+  background-image: url('assets/img/flash.jpg');
+  background-size: cover;
+}
