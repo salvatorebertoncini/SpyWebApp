@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {DomSanitizer} from "@angular/platform-browser";
 import {HttpSerService} from "../_services/http/http-ser.service";
+import {BaseChartDirective} from "ng2-charts";
 
 @Component({
   selector: 'app-stats',
@@ -10,26 +11,36 @@ import {HttpSerService} from "../_services/http/http-ser.service";
 })
 export class StatsComponent implements OnInit {
 
-  req = {"r": "Stats"};
-  private resp: any;
-  private google: any;
-  private chart: any;
-  private div: "chart_div";
+  private brandList: any;
+  private AndroidVersionList: any;
+
+  // Brand Pie
+  public BrandDistributionChartLabels: string[] = ['', ""];
+  public BrandDistributionChartData: number[] = [0, 0];
+  public BrandDistributionChartType: string = 'pie';
 
   constructor(private router: Router, private route: ActivatedRoute, private _sanitizer: DomSanitizer, private _httpService: HttpSerService) {
   }
 
   ngOnInit() {
-    this.GetAllDevices(this.req);
+    this.GetBrandStats();
+    this.GetAndroidVersionStats();
   }
 
-  GetAllDevices(req) {
+  GetBrandStats() {
+    let req = {"r": "BrandStats"};
     this._httpService.postMethod(req)
       .subscribe(
         response => {
           console.log(response);
           if (response['response']) {
-            this.resp = response["response"];
+            this.brandList = JSON.parse(response["DevicesList"]);
+
+            for (let brand of this.brandList) {
+              this.BrandDistributionChartLabels.push(brand.Brand);
+              this.BrandDistributionChartData.push(brand.counter);
+            }
+
           }
           else
             this.router.navigate(['/page-not-found']);
@@ -37,12 +48,26 @@ export class StatsComponent implements OnInit {
       );
   }
 
-  //////////////////////////////////////////////////////////////////////////////////////////////////
+  GetAndroidVersionStats() {
+    let req = {"r": "AndroidVersionStats"};
+    this._httpService.postMethod(req)
+      .subscribe(
+        response => {
+          console.log(response);
+          if (response['response']) {
+            this.AndroidVersionList = response["AndroidVersionList"];
+            console.log(response["AndroidVersionList"]);
+          }
+          else
+            this.router.navigate(['/page-not-found']);
+        }
+      );
+  }
 
-  // Doughnut
-  public doughnutChartLabels: string[] = ['6.0.1', '6.1.1', '7.0.1'];
-  public doughnutChartData: number[] = [3, 4, 1];
-  public doughnutChartType: string = 'doughnut';
+  // Android Version Doughnut
+  public AndroidVersionChartLabels: string[] = ['6.0.1', '6.1.1', '7.1'];
+  public AndroidVersionChartData: number[] = [3, 4, 1];
+  public AndroidVersionChartType: string = 'doughnut';
 
   // events
   public chartClicked(e: any): void {

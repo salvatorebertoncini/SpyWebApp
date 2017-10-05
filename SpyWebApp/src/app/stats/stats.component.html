@@ -12,24 +12,25 @@
   </md-card-header>
 </md-card>
 
-
 <md-card class="example-card">
   <md-card-header>
     <div md-card-avatar>
       <md-icon>android</md-icon>
     </div>
     <md-card-title>
-      Response: {{ resp }}
+      Android Version
     </md-card-title>
-    <md-card-subtitle></md-card-subtitle>
+    <md-card-subtitle>
+
+    </md-card-subtitle>
   </md-card-header>
   <md-card-content>
 
     <div style="display: block">
       <canvas baseChart
-              [data]="doughnutChartData"
-              [labels]="doughnutChartLabels"
-              [chartType]="doughnutChartType"
+              [data]="AndroidVersionChartData"
+              [labels]="AndroidVersionChartLabels"
+              [chartType]="AndroidVersionChartType"
               (chartHover)="chartHovered($event)"
               (chartClick)="chartClicked($event)"></canvas>
     </div>
@@ -37,3 +38,28 @@
   </md-card-content>
 </md-card>
 
+<md-card class="example-card">
+  <md-card-header>
+    <div md-card-avatar>
+      <md-icon>stay_current_portrait</md-icon>
+    </div>
+    <md-card-title>
+      Brand Distribution
+    </md-card-title>
+    <md-card-subtitle>
+
+    </md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+
+    <div style="display: block">
+      <canvas baseChart #baseChart="base-chart"
+              [data]="BrandDistributionChartData"
+              [labels]="BrandDistributionChartLabels"
+              [chartType]="BrandDistributionChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+    </div>
+
+  </md-card-content>
+</md-card>
