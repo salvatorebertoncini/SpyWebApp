@@ -27,7 +27,7 @@
   <md-card-content>
 
     <div style="display: block">
-      <canvas baseChart
+      <canvas *ngIf="loadAndroidVersionChart" baseChart
               [data]="AndroidVersionChartData"
               [labels]="AndroidVersionChartLabels"
               [chartType]="AndroidVersionChartType"
@@ -53,7 +53,7 @@
   <md-card-content>
 
     <div style="display: block">
-      <canvas baseChart #baseChart="base-chart"
+      <canvas *ngIf="loadBrandChart" baseChart #baseChart="base-chart"
               [data]="BrandDistributionChartData"
               [labels]="BrandDistributionChartLabels"
               [chartType]="BrandDistributionChartType"

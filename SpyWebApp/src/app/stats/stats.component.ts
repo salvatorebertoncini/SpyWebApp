@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {DomSanitizer} from "@angular/platform-browser";
 import {HttpSerService} from "../_services/http/http-ser.service";
-import {BaseChartDirective} from "ng2-charts";
 
 @Component({
   selector: 'app-stats',
@@ -13,11 +12,18 @@ export class StatsComponent implements OnInit {
 
   private brandList: any;
   private AndroidVersionList: any;
+  private loadBrandChart: boolean = false;
+  private loadAndroidVersionChart: boolean = false;
 
   // Brand Pie
-  public BrandDistributionChartLabels: string[] = ['', ""];
-  public BrandDistributionChartData: number[] = [0, 0];
+  public BrandDistributionChartLabels: string[] = [];
+  public BrandDistributionChartData: number[] = [];
   public BrandDistributionChartType: string = 'pie';
+
+  // Android Version Doughnut
+  public AndroidVersionChartLabels: string[] = [];
+  public AndroidVersionChartData: number[] = [];
+  public AndroidVersionChartType: string = 'doughnut';
 
   constructor(private router: Router, private route: ActivatedRoute, private _sanitizer: DomSanitizer, private _httpService: HttpSerService) {
   }
@@ -41,6 +47,8 @@ export class StatsComponent implements OnInit {
               this.BrandDistributionChartData.push(brand.counter);
             }
 
+            this.loadBrandChart = true;
+
           }
           else
             this.router.navigate(['/page-not-found']);
@@ -55,19 +63,19 @@ export class StatsComponent implements OnInit {
         response => {
           console.log(response);
           if (response['response']) {
-            this.AndroidVersionList = response["AndroidVersionList"];
+            this.AndroidVersionList = JSON.parse(response["AndroidVersionList"]);
             console.log(response["AndroidVersionList"]);
+            for (let version of this.AndroidVersionList) {
+              this.AndroidVersionChartLabels.push(version["AndroidVersion"]);
+              this.AndroidVersionChartData.push(version.counter);
+            }
+            this.loadAndroidVersionChart = true;
           }
           else
             this.router.navigate(['/page-not-found']);
         }
       );
   }
-
-  // Android Version Doughnut
-  public AndroidVersionChartLabels: string[] = ['6.0.1', '6.1.1', '7.1'];
-  public AndroidVersionChartData: number[] = [3, 4, 1];
-  public AndroidVersionChartType: string = 'doughnut';
 
   // events
   public chartClicked(e: any): void {
