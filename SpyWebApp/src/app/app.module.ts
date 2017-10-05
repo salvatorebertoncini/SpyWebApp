@@ -1,12 +1,47 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule } from '@angular/material';
-
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RouterModule, Routes} from '@angular/router';
 import {HttpModule} from "@angular/http";
-import {FormsModule} from "@angular/forms";
+import 'hammerjs';
+import {ChartsModule} from 'ng2-charts';
+
+import {
+  MdAutocompleteModule,
+  MdButtonModule,
+  MdButtonToggleModule,
+  MdCardModule,
+  MdCheckboxModule,
+  MdChipsModule,
+  MdDatepickerModule,
+  MdDialogModule,
+  MdExpansionModule,
+  MdGridListModule,
+  MdIconModule,
+  MdInputModule,
+  MdListModule,
+  MdMenuModule,
+  MdNativeDateModule,
+  MdPaginatorModule,
+  MdProgressBarModule,
+  MdProgressSpinnerModule,
+  MdRadioModule,
+  MdRippleModule,
+  MdSelectModule,
+  MdSidenavModule,
+  MdSliderModule,
+  MdSlideToggleModule,
+  MdSnackBarModule,
+  MdSortModule,
+  MdTableModule,
+  MdTabsModule,
+  MdToolbarModule,
+  MdTooltipModule,
+  MdStepperModule,
+} from '@angular/material';
+
 
 import { AppComponent } from './app.component';
 import { SpytoolbarComponent } from './spytoolbar/spytoolbar.component';
@@ -22,16 +57,21 @@ import {BrandComponent} from './brand/brand.component';
 import {UserComponent} from './users/users.component';
 import {AllUsersComponent} from './all-users/all-users.component';
 import {DevicesComponent} from './devices/devices.component';
+import {AllDevicesComponent} from './all-devices/all-devices.component';
+import {StatsComponent} from './stats/stats.component';
+import {GoogleChartResolver} from "./_services/google-chart/google-chart.resolver";
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', redirectTo: '', pathMatch: 'full' },
+  {path: '', component: HomeComponent},
+  {path: 'home', redirectTo: '', pathMatch: 'full'},
   {path: 'brands', component: SpyContentComponent},
   {path: 'brands/:brand', component: BrandComponent},
   {path: 'users', component: AllUsersComponent},
   {path: 'users/:slug', component: UserComponent},
+  {path: 'devices', component: AllDevicesComponent},
   {path: 'devices/:slug', component: DevicesComponent},
-  { path: '**', component: PageNotFoundComponent }
+  {path: 'stats', component: StatsComponent},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
@@ -44,7 +84,9 @@ const appRoutes: Routes = [
     BrandComponent,
     UserComponent,
     AllUsersComponent,
-    DevicesComponent
+    DevicesComponent,
+    AllDevicesComponent,
+    StatsComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -58,7 +100,10 @@ const appRoutes: Routes = [
     MdMenuModule,
     MdCardModule,
     MdToolbarModule,
-    MdIconModule
+    MdIconModule,
+    MdNativeDateModule,
+    ReactiveFormsModule,
+    ChartsModule
   ],
   providers: [
     HttpSerService,
@@ -66,6 +111,39 @@ const appRoutes: Routes = [
     AlertService,
     AuthService,
     AuthGuard
+  ],
+  exports: [
+    MdAutocompleteModule,
+    MdButtonModule,
+    MdButtonToggleModule,
+    MdCardModule,
+    MdCheckboxModule,
+    MdChipsModule,
+    MdStepperModule,
+    MdDatepickerModule,
+    MdDialogModule,
+    MdExpansionModule,
+    MdGridListModule,
+    MdIconModule,
+    MdInputModule,
+    MdListModule,
+    MdMenuModule,
+    MdNativeDateModule,
+    MdPaginatorModule,
+    MdProgressBarModule,
+    MdProgressSpinnerModule,
+    MdRadioModule,
+    MdRippleModule,
+    MdSelectModule,
+    MdSidenavModule,
+    MdSliderModule,
+    MdSlideToggleModule,
+    MdSnackBarModule,
+    MdSortModule,
+    MdTableModule,
+    MdTabsModule,
+    MdToolbarModule,
+    MdTooltipModule,
   ],
   bootstrap: [AppComponent]
 })

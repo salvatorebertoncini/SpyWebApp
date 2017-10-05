@@ -1,26 +1,4 @@
-<md-card class="example-card" *ngFor="let data of MessagesList">
-
-  <md-card-header>
-
-    <div md-card-avatar>
-      <md-icon>email</md-icon>
-    </div>
-    <md-card-title>{{ data.text }}</md-card-title>
-    <md-card-subtitle>Sender: {{ data.sender }}</md-card-subtitle>
-    <md-card-subtitle>Receiver: {{ data.receiver }}</md-card-subtitle>
-  </md-card-header>
-
-  <md-card-content>
-
-  </md-card-content>
-
-  <md-card-actions>
-
-  </md-card-actions>
-
-</md-card>
-
-<md-card class="example-card" *ngFor="let data of DevicesList">
+<md-card class="example-card" *ngFor="let data of devicesJSONList">
 
   <md-card-header>
     <md-card-title>{{ data["BuildInfo"]["Brand"]}} {{ data["BuildInfo"]["Model"]}}</md-card-title>

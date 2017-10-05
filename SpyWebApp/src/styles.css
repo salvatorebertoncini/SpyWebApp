@@ -14,3 +14,12 @@ md-card {
   background-image: url('assets/img/flash.jpg');
   background-size: cover;
 }
+
+.demo-tab-group {
+  border: 1px solid #e8e8e8;
+}
+
+.demo-tab-content {
+  padding: 16px;
+}
+

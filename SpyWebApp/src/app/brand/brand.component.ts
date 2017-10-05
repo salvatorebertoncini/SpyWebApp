@@ -16,6 +16,7 @@ export class BrandComponent implements OnInit {
   private IMEIList: any;
   private brand: any;
   private number: any;
+  private model: any;
 
   constructor(private router: Router, private route: ActivatedRoute, private _sanitizer: DomSanitizer, private _httpService: HttpSerService) {
   }
@@ -39,6 +40,7 @@ export class BrandComponent implements OnInit {
             this.IMEIList = devicesJSONList["IMEI"];
             this.brand = devicesJSONList["Brand"];
             this.number = devicesJSONList["Number"];
+            this.model = devicesJSONList["Model"];
           }
           else
             this.router.navigate(['/page-not-found']);
