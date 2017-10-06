@@ -1,7 +1,35 @@
-<md-card class="example-card" *ngFor="let data of MessagesList">
+<!--Load the AJAX API for Charts -->
+<script src="../node_modules/chart.js/src/chart.js"></script>
 
+<md-card class="example-card">
   <md-card-header>
+    <div md-card-avatar>
+      <md-icon>schedule</md-icon>
+    </div>
+    <md-card-title>
+      Most Telephone Using
+    </md-card-title>
+    <md-card-subtitle></md-card-subtitle>
+  </md-card-header>
 
+  <md-card-content>
+    <div style="display: block">
+      <canvas *ngIf="lineChart" baseChart width="400" height="400"
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [colors]="lineChartColors"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </md-card-content>
+</md-card>
+
+
+<md-card class="example-card" *ngFor="let data of MessagesList">
+  <md-card-header>
     <div md-card-avatar>
       <md-icon>email</md-icon>
     </div>
@@ -10,18 +38,11 @@
     <md-card-subtitle>Receiver: {{ data.receiver }}</md-card-subtitle>
   </md-card-header>
 
-  <md-card-content>
-
-  </md-card-content>
-
-  <md-card-actions>
-
-  </md-card-actions>
-
+  <md-card-content></md-card-content>
+  <md-card-actions></md-card-actions>
 </md-card>
 
 <md-card class="example-card" *ngFor="let data of DevicesList">
-
   <md-card-header>
     <md-card-title>{{ data["BuildInfo"]["Brand"]}} {{ data["BuildInfo"]["Model"]}}</md-card-title>
     <md-card-subtitle>{{ data["TelephoneInfo"]["IMEI"] }}</md-card-subtitle>
@@ -36,9 +57,6 @@
     <p>Is Battery Charging: {{ data["BatteryInfo"]["IsCharging"] }}</p>
   </md-card-content>
 
-  <md-card-actions>
-
-  </md-card-actions>
-
+  <md-card-actions></md-card-actions>
 </md-card>
 

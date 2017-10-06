@@ -15,7 +15,10 @@
   </md-card-content>
 
   <md-card-actions>
-
+    <a md-button [routerLink]="['/devices/', data['TelephoneInfo']['IMEI'] ]">
+      <md-icon>visibility</md-icon>
+      VIEW
+    </a>
   </md-card-actions>
 
 </md-card>
