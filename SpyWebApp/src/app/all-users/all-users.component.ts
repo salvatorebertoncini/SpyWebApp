@@ -10,6 +10,7 @@ import {HttpSerService} from "../_services/http/http-ser.service";
 })
 export class AllUsersComponent implements OnInit {
 
+  //Initialize vars
   slug: string;
   private sub: any;
   req = {"r": "GetAllUsers"};
@@ -18,16 +19,24 @@ export class AllUsersComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private _sanitizer: DomSanitizer, private _httpService: HttpSerService) {
   }
 
+  //Call method into ngOnInit when this page is loading
   ngOnInit() {
     this.getAllUsers();
   }
 
   getAllUsers() {
+
+    //POST method request
     this._httpService.postMethod(this.req)
       .subscribe(
         response => {
+
+          //print post method response
           console.log(response);
+
+          //if post response is succesful, transfers into UserList the result, else redirects at page-not-found
           if (response["response"]) {
+
             this.UserList = JSON.parse(response["UserList"]);
             console.log(this.UserList);
           }

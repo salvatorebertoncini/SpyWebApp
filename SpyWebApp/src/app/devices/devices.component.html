@@ -1,6 +1,7 @@
 <!--Load the AJAX API for Charts -->
 <script src="../node_modules/chart.js/src/chart.js"></script>
 
+<!-- Chart Material Design card-->
 <md-card class="example-card">
   <md-card-header>
     <div md-card-avatar>
@@ -14,6 +15,8 @@
 
   <md-card-content>
     <div style="display: block">
+
+      <!-- Call the chart only when every data is loaded -->
       <canvas *ngIf="lineChart" baseChart width="400" height="400"
               [datasets]="lineChartData"
               [labels]="lineChartLabels"
@@ -27,7 +30,7 @@
   </md-card-content>
 </md-card>
 
-
+<!-- For every message in messagesList, create a Material Design card -->
 <md-card class="example-card" *ngFor="let data of MessagesList">
   <md-card-header>
     <div md-card-avatar>
@@ -42,6 +45,7 @@
   <md-card-actions></md-card-actions>
 </md-card>
 
+<!-- For every data in DevicesList, create a Material Design card with all device info -->
 <md-card class="example-card" *ngFor="let data of DevicesList">
   <md-card-header>
     <md-card-title>{{ data["BuildInfo"]["Brand"]}} {{ data["BuildInfo"]["Model"]}}</md-card-title>
