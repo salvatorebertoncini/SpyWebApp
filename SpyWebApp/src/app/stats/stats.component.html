@@ -1,6 +1,7 @@
 <!--Load the AJAX API for Charts -->
 <script src="../node_modules/chart.js/src/chart.js"></script>
 
+<!-- Material Design Card used for presentation -->
 <md-card class="example-card">
   <md-card-header>
     <div md-card-avatar class="example-header-image"></div>
@@ -12,6 +13,7 @@
   </md-card-header>
 </md-card>
 
+<!-- Material Design which contain Android Version Stats -->
 <md-card class="example-card">
   <md-card-header>
     <div md-card-avatar>
@@ -27,6 +29,7 @@
   <md-card-content>
 
     <div style="display: block">
+      <!-- Android Version Doughnut Chart -->
       <canvas *ngIf="loadAndroidVersionChart" baseChart
               [data]="AndroidVersionChartData"
               [labels]="AndroidVersionChartLabels"
@@ -38,6 +41,7 @@
   </md-card-content>
 </md-card>
 
+<!-- Material Design which contain Brand Distribution Stats -->
 <md-card class="example-card">
   <md-card-header>
     <div md-card-avatar>
@@ -53,6 +57,7 @@
   <md-card-content>
 
     <div style="display: block">
+      <!-- Brand Distribution pie chart -->
       <canvas *ngIf="loadBrandChart" baseChart #baseChart="base-chart"
               [data]="BrandDistributionChartData"
               [labels]="BrandDistributionChartLabels"

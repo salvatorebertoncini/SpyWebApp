@@ -12,6 +12,7 @@ export class SpytoolbarComponent implements OnInit {
 
   title = 'SpyWebApp';
 
+  //Menu with title, slug and icon for each element
   MenuList = [
     {slug: "home", title: "Home", icon: "home"},
     {slug: "brands", title: "Brands", icon: "android"},
